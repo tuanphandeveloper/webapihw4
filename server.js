@@ -18,7 +18,7 @@ app.use(passport.initialize());
 var router = express.Router();
 
 router.route('/review')
-    .post(function (req, res) {
+    .post(authJwtController.isAuthenticated, function (req, res) {
         if(!req.body.movie){
             res.json({sucess: false, msg: 'Please pass movie'})
         }
@@ -60,7 +60,7 @@ router.route('/review')
     });
 
 router.route('/allreviews')
-    .get(function (req, res) {
+    .get(authJwtController.isAuthenticated, function (req, res) {
         //.get( function (req, res) {
         //.get(function (req, res) {
         Review.find(function (err, reviews) {
@@ -71,7 +71,7 @@ router.route('/allreviews')
     });
 
 router.route('/movie')
-    .post(function (req, res) {
+    .post(authJwtController.isAuthenticated, function (req, res) {
         if (!req.body.title ||!req.body.year) {
             res.json({success: false, msg: 'Please pass title and year(1900 - 2018)'});
         } else {
