@@ -1,0 +1,866 @@
+{
+	"id": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+	"name": "Hw3",
+	"description": "",
+	"order": [
+		"2ce5acca-bbda-f93f-353f-538a5d2c933e",
+		"ddfb63e0-91f4-cd39-02aa-ab18f91cd83b",
+		"bd9a0a4f-cf15-11ff-5192-8d4673e78b3c",
+		"956b4dff-73ac-141f-81dc-745b167f303c",
+		"9737a123-fb02-a370-8191-29df56c74b60",
+		"d78f6304-9434-3689-19dc-dfe20c6e2d7c",
+		"12290ada-700f-50f2-72d7-61d20fffca5d",
+		"234691e1-e1ff-cb18-35b8-bb72794e1aad",
+		"545b2bf8-ca9d-2434-0613-3ef592645a29",
+		"316ea239-e09e-f90d-671f-dd2cc052d4e0",
+		"a1ad15a2-2c2d-739a-7599-39feec05def3",
+		"b2c9280b-4238-a206-0346-fd961618f41c",
+		"d1244744-3c0a-86c6-5b46-a046933c7bec",
+		"3ce208c0-cf90-fa4f-6034-ae2449e8b575",
+		"96c751b8-29a0-d457-6844-0a8fd03acc93",
+		"828ea4f9-cb26-185a-220e-28105a9138fd"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520465250008,
+	"owner": "3627804",
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "12290ada-700f-50f2-72d7-61d20fffca5d",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/allmovies",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1521088706198,
+			"name": "heroku get allmovies",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "234691e1-e1ff-cb18-35b8-bb72794e1aad",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/movieinfo/5aa9b2e6e7a98b36c45fcd1b",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1521088510342,
+			"name": "hw3 heroku post",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "2ce5acca-bbda-f93f-353f-538a5d2c933e",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/signup",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "testuser3",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password3",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Some Body",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": null,
+			"time": 1521088299706,
+			"name": "hw3 local signup",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "316ea239-e09e-f90d-671f-dd2cc052d4e0",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/updatemovie/5aa9941a207de1015484a39e",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "PUT",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": [
+				{
+					"key": "title",
+					"value": "Finding  Ko1 updated",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "year",
+					"value": "2011",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "genre",
+					"value": "LameMovie yes",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest1 eqw",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest2 as",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest3 asdad",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lamechar",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lame char 2",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "NEW lame char 3",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "local update",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088291220,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "3ce208c0-cf90-fa4f-6034-ae2449e8b575",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/signin",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4851749-ff5d-4f70-a854-94694c701bbf",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody)",
+							"",
+							"var token = jsonData.token;",
+							"console.log(jsonData);",
+							"console.log(token);",
+							"",
+							"pm.environment.set(\"token\", token);"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": [
+				{
+					"key": "username",
+					"value": "testuser3",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "password",
+					"value": "password3",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "name",
+					"value": "Ran Do",
+					"type": "text",
+					"enabled": false,
+					"description": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "heroku sign in",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088493925,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody)\n\nvar token = jsonData.token;\nconsole.log(jsonData);\nconsole.log(token);\n\npm.environment.set(\"token\", token);",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "545b2bf8-ca9d-2434-0613-3ef592645a29",
+			"headers": "Authorization: {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/deletemovie/5aa9f584af9f2e00042f724c",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": null,
+			"time": 1521088542773,
+			"name": "Heroku delete Movie",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "828ea4f9-cb26-185a-220e-28105a9138fd",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/movieinfo/5aa9b2e6e7a98b36c45fcd1b",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": null,
+			"dataMode": "params",
+			"name": "Heroku get one movie",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521089057969,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "956b4dff-73ac-141f-81dc-745b167f303c",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/users",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"auth": null,
+			"time": 1521007449860,
+			"name": "hw3 local users",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "96c751b8-29a0-d457-6844-0a8fd03acc93",
+			"headers": "Authorization: {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/updatemovie/5aa9f4b9af9f2e00042f7248",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "PUT",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": [
+				{
+					"key": "title",
+					"value": "last test UPDATED",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "year",
+					"value": "2018",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "genre",
+					"value": "Comedy",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest1 eqw",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest2 as",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest3 asdad",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lamechar",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lame char 2",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lame char 3",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "heroku update movie",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088538275,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "9737a123-fb02-a370-8191-29df56c74b60",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/users/5aa9b0134ab8020808910e78",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1521088309906,
+			"name": "hw3 local userId",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "a1ad15a2-2c2d-739a-7599-39feec05def3",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/deletemovie/5aa8c9f68d74784234cbd44f",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "DELETE",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": null,
+			"dataMode": "params",
+			"name": "local delete",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088327715,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "b2c9280b-4238-a206-0346-fd961618f41c",
+			"headers": "Authorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/allmovies",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": null,
+			"dataMode": "params",
+			"name": "local get all movies",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088461690,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "bd9a0a4f-cf15-11ff-5192-8d4673e78b3c",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/signin",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a727dd27-369a-46c4-8970-adcf95b122f9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a66fa85-e14a-4fed-8751-60716012d46d",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody)",
+							"",
+							"var token = jsonData.token;",
+							"console.log(jsonData);",
+							"console.log(token);",
+							"",
+							"pm.environment.set(\"token\", token);"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "testuser3",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password3",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": {
+				"type": "basic",
+				"basic": []
+			},
+			"time": 1521088304504,
+			"name": "hw3 local signin",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody)\n\nvar token = jsonData.token;\nconsole.log(jsonData);\nconsole.log(token);\n\npm.environment.set(\"token\", token);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic"
+			}
+		},
+		{
+			"id": "d1244744-3c0a-86c6-5b46-a046933c7bec",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/signup",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"data": [
+				{
+					"key": "username",
+					"value": "testuser4",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "password",
+					"value": "password4",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "name",
+					"value": "Ran Do",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "heroku signup",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521088478694,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "d78f6304-9434-3689-19dc-dfe20c6e2d7c",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://webapihw3.herokuapp.com/movie",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "title",
+					"value": "Idk, taylor is a nice guy",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "year",
+					"value": "2018",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "genre",
+					"value": "Comedy",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest1 eqw",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest2 as",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "actor",
+					"value": "actortest3 asdad",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lamechar",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lame char 2",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": "lame char 3",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				},
+				{
+					"key": "character",
+					"value": " not suppose to be here",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": null,
+			"time": 1521088823100,
+			"name": "heroku post new movie",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "ddfb63e0-91f4-cd39-02aa-ab18f91cd83b",
+			"headers": "Authorization: {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/postjwt",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": null,
+			"time": 1521007423607,
+			"name": "hw3 local postjwt",
+			"description": "",
+			"collectionId": "22bc371c-35f8-ce03-c04f-5c96d73cff24",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null
+		}
+	]
+}
