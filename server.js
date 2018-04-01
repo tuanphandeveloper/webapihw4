@@ -181,9 +181,7 @@ router.route('/allmovies')
         Movie.find(function (err, movies) {
             if (err) res.send(err);
             // return the movies
-            if(reviews === 'false'){
-                res.json(movies);
-            } else {
+            if(reviews === 'true'){
                 Movie.aggregate([{
                     $lookup:{
                         from: "reviews",
@@ -196,6 +194,8 @@ router.route('/allmovies')
                     if(err) res.send(err);
                     else res.json(result);
                 });
+            } else {
+                res.json(movies);
             }
         });
     });
@@ -209,9 +209,7 @@ router.route('/movieinfo/:movieId')
 
             // var movieJson = JSON.stringify(movie);
             // return that user
-            if(review === "false"){
-                res.json(movie);
-            } else {
+            if(review === "true"){
                 Movie.aggregate([{
                     $lookup: {
                         from: "reviews",
@@ -220,9 +218,9 @@ router.route('/movieinfo/:movieId')
                         as: 'review'
                     }
                 },
-                // {
-                //     $unwind:"$review"
-                // },
+                    // {
+                    //     $unwind:"$review"
+                    // },
                     {
                         $match:{ title: movie.title }
                     }
@@ -231,6 +229,8 @@ router.route('/movieinfo/:movieId')
                     if(err) res.send(err);
                     else res.json(result);
                 });
+            } else {
+                res.json(movie);
             }
         });
 
