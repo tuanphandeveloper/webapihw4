@@ -22,7 +22,7 @@ var MovieSchema = new Schema({
     //genre: ['Action','Adventure','Comedy','Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller', 'Western'],
     // actorName: [{type: String, required: true}],
     // characterName: [{ type: String, required: true}]
-    imageURL: String,
+    imageUrl: String,
     actors : {type: [ActorSchema]}
     //reviews : {type: [ReviewSchema]}
 });
