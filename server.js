@@ -81,6 +81,7 @@ router.route('/movie')
             movie.title = req.body.title;
             movie.year = req.body.year;
             movie.genre = req.body.genre;
+            movie.imageURL = req.body.image;
 
             console.log(req.body.actor.length);
             if(req.body.actor.length >= 3 && req.body.actor.length == req.body.character.length){
@@ -142,6 +143,7 @@ router.route('/updatemovie/:movieId')
                 movie.title = req.body.title;
                 movie.year = req.body.year;
                 movie.genre = req.body.genre;
+                movie.imageURL = req.body.image;
 
                 console.log(req.body.actor.length);
                 if (req.body.actor.length >= 3 && req.body.actor.length == req.body.character.length) {
