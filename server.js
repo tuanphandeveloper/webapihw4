@@ -19,6 +19,24 @@ app.use(cors());
 
 var router = express.Router();
 
+router.route('/movie/:title')
+    .get(authJwtController.isAuthenticated, function (req, res) {
+        Movie.findOne({title: req.params.title}).exec(function(err, movie1) {
+            if (err) res.send(err);
+
+            //var userJson = JSON.stringify(movie);
+            // return that user
+            if (movie1 !== null){
+                res.json(movie1);
+            }
+            else{
+                res.json({ message: 'Movie is not found' });
+            }
+
+        });
+    });
+
+
 router.route('/review')
     .post(authJwtController.isAuthenticated, function (req, res) {
         if(!req.body.movie){

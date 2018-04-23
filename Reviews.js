@@ -8,7 +8,7 @@ var ReviewSchema = new Schema({
     movie: { type: String, required: true },
     reviewer: { type: String, required: true },
     quote: { type: String, required: true },
-    rate : { type: Number, min: 0, max: 5, required: true }
+    rate : { type: Number, min: 1, max: 5, required: true }
 });
 
 ReviewSchema.pre('save', function(next) {
