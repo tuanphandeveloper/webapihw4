@@ -19,41 +19,6 @@ app.use(cors());
 
 var router = express.Router();
 
-/*
-router.route('/movie/:title')
-    .get(authJwtController.isAuthenticated, function (req, res) {
-        Movie.findOne({title: req.params.title}).exec(function(err, movie) {
-            if (err) res.send(err);
-
-            //var userJson = JSON.stringify(movie);
-            // return that user
-            if(req.query.reviews === "true"){
-                Movie.aggregate([{
-                    $lookup: {
-                        from: "reviews",
-                        localField: "title",
-                        foreignField: "movie",
-                        as: 'review'
-                    }
-                },
-                    // {
-                    //     $unwind:"$review"
-                    // },
-                    {
-                        $match:{ title: movie.title }
-                    }
-
-                ], function (err, result) {
-                    if(err) res.send(err);
-                    else res.json(result);
-                });
-            } else {
-                res.json(movie);
-            }
-        });
-    });
-*/
-
 router.route('/review')
     .post(authJwtController.isAuthenticated, function (req, res) {
         if(!req.body.movie){
@@ -89,7 +54,7 @@ router.route('/review')
                         res.json({message: 'review created!'});
                     });
                 } else {
-                    res.status(424);
+                    res.status(420);
                     res.json({message: 'Movie not found in database'})
                 }
             });
@@ -248,6 +213,17 @@ router.route('/movie/:movieId')
 
             // var movieJson = JSON.stringify(movie);
             // return that user
+        // Review.find(function (err, reviews) {
+        //     Review.aggregate([
+        //         {$match: {title: movie.title}},
+        //         //{$group: {_id: null, avgRating: {$avg: "$rate"}}}
+        //     ],function (err, reviewResult) {
+        //         if(err) res.send(err);
+        //         else res.json(reviewResult);
+        //     });
+        //     //res.json(reviews);
+        // })
+
             if(req.query.reviews === "true"){
                 Movie.aggregate([{
                     $lookup: {
@@ -257,16 +233,13 @@ router.route('/movie/:movieId')
                         as: 'review'
                     }
                 },
-                    // {
-                    //     $unwind:"$review"
-                    // },
                     {
                         $match:{ title: movie.title }
-                    }
-
+                    },
                 ], function (err, result) {
                     if(err) res.send(err);
-                    else res.json(result);
+                    else
+                        res.json(result);
                 });
             } else {
                 res.json(movie);
