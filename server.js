@@ -185,7 +185,7 @@ router.route('/allmovies')
         Movie.find(function (err, movies) {
             if (err) res.send(err);
             // return the movies
-            if(reviews === 'true'){
+            if(req.query.reviews === 'true'){
                 Movie.aggregate([{
                     $lookup:{
                         from: "reviews",
@@ -213,7 +213,7 @@ router.route('/movieinfo/:movieId')
 
             // var movieJson = JSON.stringify(movie);
             // return that user
-            if(review === "true"){
+            if(req.query.review === "true"){
                 Movie.aggregate([{
                     $lookup: {
                         from: "reviews",
