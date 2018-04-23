@@ -19,6 +19,7 @@ app.use(cors());
 
 var router = express.Router();
 
+/*
 router.route('/movie/:title')
     .get(authJwtController.isAuthenticated, function (req, res) {
         Movie.findOne({title: req.params.title}).exec(function(err, movie) {
@@ -51,7 +52,7 @@ router.route('/movie/:title')
             }
         });
     });
-
+*/
 
 router.route('/review')
     .post(authJwtController.isAuthenticated, function (req, res) {
@@ -237,7 +238,7 @@ router.route('/movies')
             }
         });
     });
-/*
+
 router.route('/movie/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
@@ -273,7 +274,7 @@ router.route('/movie/:movieId')
         });
 
     })
-*/
+
 router.route('/deletemovie/:movieId')
     .delete(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
