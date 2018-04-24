@@ -23,6 +23,8 @@ var MovieSchema = new Schema({
     // actorName: [{type: String, required: true}],
     // characterName: [{ type: String, required: true}]
     imageURL: String,
+    numberReview: Number,
+    totalRating: Number,
     avgRating: Number,
     actors : {type: [ActorSchema]}
     //reviews : {type: [ReviewSchema]}

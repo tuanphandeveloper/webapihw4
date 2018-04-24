@@ -9,7 +9,6 @@ var jwt = require('jsonwebtoken');
 var Review = require('./Reviews');
 var cors = require('cors');
 
-
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,27 +18,23 @@ app.use(cors());
 
 var router = express.Router();
 
-router.route('/review')
+router.route('/review/:movieId')
     .post(authJwtController.isAuthenticated, function (req, res) {
-        if(!req.body.movie){
-            res.json({sucess: false, msg: 'Please pass movie'})
-        }
-        else if (!req.body.reviewer) {
+        var id = req.params.movieId;
+
+        if (!req.body.reviewer) {
             res.json({sucess: false, msg: 'Please pass reviewer'})
         }
         else if (!req.body.quote) {
             res.json({sucess: false, msg: 'Please pass opinion quote of movie'})
         }
         else if (!req.body.rate) {
-            res.json({sucess: false, msg: 'Please pass rating(0 - 5)'})
+            res.json({sucess: false, msg: 'Please pass rating(1 - 5)'})
         } else {
-            Movie.findOne({title: req.body.movie}).select('title').exec(function (err, result) {
-                if (err) {
-                    res.send({success: false, msg: 'Please pass movie from the database'})
-                    // var movieJson = JSON.stringify(movie);
-                    // return that user
-                    // res.json(movie)
-                }else if(result){
+
+            Movie.findById(id, function (err, movie) {
+                if (err) res.send(err);
+                else if (movie) {
 
                     var review = new Review(req.body)
                     review.movie = req.body.movie
@@ -47,29 +42,99 @@ router.route('/review')
                     review.quote = req.body.quote
                     review.rate = req.body.rate
 
+                    movie.numberReview += 1;
+                    movie.totalRating += review.rate;
+
+                    movie.avgRating = movie.totalRating / movie.numberReview
+
                     review.save(function (err) {
                         if (err) {
                             return res.send(err);
                         }
+                        movie.save(function (error) {
+                            if (error) {
+                                return res.send(error)
+                            }
+                        });
                         res.json({message: 'review created!'});
                     });
-                } else {
-                    res.status(420);
-                    res.json({message: 'Movie not found in database'})
                 }
             });
         }
     });
 
+// router.route('/review')
+//     .post(authJwtController.isAuthenticated, function (req, res) {
+//         if(!req.body.movie){
+//             res.json({sucess: false, msg: 'Please pass movie'})
+//         }
+//         else if (!req.body.reviewer) {
+//             res.json({sucess: false, msg: 'Please pass reviewer'})
+//         }
+//         else if (!req.body.quote) {
+//             res.json({sucess: false, msg: 'Please pass opinion quote of movie'})
+//         }
+//         else if (!req.body.rate) {
+//             res.json({sucess: false, msg: 'Please pass rating(1 - 5)'})
+//         } else {
+//             Movie.findOne({title: req.body.movie}).select('title').exec(function (err, result) {
+//                 if (err) {
+//                     res.send({success: false, msg: 'Please pass movie from the database'})
+//                 }else if(result){
+//
+//                     var review = new Review(req.body)
+//                     review.movie = req.body.movie
+//                     review.reviewer = req.body.reviewer
+//                     review.quote = req.body.quote
+//                     review.rate = req.body.rate
+//
+//                     // result.numberReview += 1;
+//                     // result.totalRating += review.rate;
+//
+//                     result.avgRating = 2
+//
+//                     result.save(function (err) {
+//                         if (err) {
+//                             return res.send(err);
+//                         }
+//                         review.save(function (error) {
+//                             if (error){
+//                                 return res.send(error)
+//                             }
+//                             else res.json({message: 'review!'});
+//                         });
+//                         res.json({message: 'review created!'});
+//                     });
+//                 } else {
+//                     res.status(420);
+//                     res.json({message: 'Movie not found in database'})
+//                 }
+//             });
+//         }
+//     });
+
 router.route('/reviews')
     .get(authJwtController.isAuthenticated, function (req, res) {
         //.get( function (req, res) {
         //.get(function (req, res) {
+
         Review.find(function (err, reviews) {
             if (err) res.send(err);
             // return the movies
+
             res.json(reviews);
         });
+
+        // Review.find(function (err, reviews) {
+        //     Review.aggregate([
+        //         {$match: {movie: "Cars"}},
+        //         {$group: {_id: null, avgRating: {$avg: "$rate"}}}
+        //     ],function (err, reviews) {
+        //         if(err) res.send(err);
+        //         else res.json(reviews);
+        //     });
+        //     //res.json(reviews);
+        // })
     });
 
 router.route('/movie')
@@ -82,6 +147,9 @@ router.route('/movie')
             movie.year = req.body.year;
             movie.genre = req.body.genre;
             movie.imageURL = req.body.image;
+            movie.numberReview = 0;
+            movie.totalRating = 0;
+            movie.avgRating = 0;
 
             console.log(req.body.actor.length);
             if(req.body.actor.length >= 3 && req.body.actor.length == req.body.character.length){
@@ -158,7 +226,7 @@ router.route('/movie/:movieId')
                 }
             }
 
-        console.log(req.body.actor.length);
+        //console.log(req.body.actor.length);
 
             // update the movie
             movie.save(function (err) {
@@ -207,19 +275,18 @@ router.route('/movies')
 router.route('/movie/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
-        var review = req.headers.reviews;
         Movie.findById(id, function (err, movie) {
             if (err) res.send(err);
 
             // var movieJson = JSON.stringify(movie);
             // return that user
-        // Review.find(function (err, reviews) {
+        // Review.find(function (err, reviews1) {
         //     Review.aggregate([
         //         {$match: {title: movie.title}},
-        //         //{$group: {_id: null, avgRating: {$avg: "$rate"}}}
-        //     ],function (err, reviewResult) {
+        //         {$group: {_id: null, avgRating: {$avg: "$rate"}}}
+        //     ],function (err, reviews1) {
         //         if(err) res.send(err);
-        //         else res.json(reviewResult);
+        //         else res.json(reviews1);
         //     });
         //     //res.json(reviews);
         // })
