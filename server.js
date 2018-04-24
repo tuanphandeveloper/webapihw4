@@ -264,9 +264,13 @@ router.route('/movies')
                 }
                 ], function (err, result) {
                     if(err) res.send(err);
-                    else res.json(result);
+                    else {
+                        result.sort(function (a, b) { return b.avgRating - a.avgRating })
+                        res.json(result);
+                    }
                 });
             } else {
+                movies.sort(function (a, b) { return b.avgRating - a.avgRating })
                 res.json(movies);
             }
         });
