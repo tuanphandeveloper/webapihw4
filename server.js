@@ -8,6 +8,8 @@ var Actor = require('./Movies');
 var jwt = require('jsonwebtoken');
 var Review = require('./Reviews');
 var cors = require('cors');
+const crypto = require("crypto");
+var rp = require('request-promise');
 
 var app = express();
 app.use(bodyParser.json());
@@ -16,10 +18,46 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(cors());
 
+const GA_TRACKING_ID = process.env.GA_TRACKING_ID;
 var router = express.Router();
+
+function trackDimension(category, action, label, value, dimension, metric) {
+
+    var options = { method: 'GET',
+        url: 'https://www.google-analytics.com/collect',
+        qs:
+            {   // API Version.
+                v: '1',
+                // Tracking ID / Property ID.
+                tid: GA_TRACKING_ID,
+                // Random Client Identifier. Ideally, this should be a UUID that
+                // is associated with particular user, device, or browser instance.
+                cid: crypto.randomBytes(16).toString("hex"),
+                // Event hit type.
+                t: 'event',
+                // Event category.
+                ec: category,
+                // Event action.
+                ea: action,
+                // Event label.
+                el: label,
+                // Event value.
+                ev: value,
+                // Custom Dimension
+                cd1: dimension,
+                // Custom Metric
+                cm1: metric
+            },
+        headers:
+            {  'Cache-Control': 'no-cache' } };
+
+    return rp(options);
+}
 
 router.route('/review/:movieId')
     .post(authJwtController.isAuthenticated, function (req, res) {
+
+
         var id = req.params.movieId;
 
 
@@ -40,6 +78,12 @@ router.route('/review/:movieId')
             Movie.findById(id, function (err, movie) {
                 if (err) res.send(err);
                 else if (movie) {
+
+                    trackDimension(movie.genre, 'post /review/' + req.params.movieId, 'API Request for Movie Review', '1', movie.title, '1')
+                        .then(function (response) {
+                            console.log(response.body);
+                            //res.status(200).send('Event tracked.').end();
+                        });
 
                     var review = new Review(req.body)
                     review.movie = movie.title
@@ -283,6 +327,7 @@ router.route('/movies')
 
 router.route('/movie/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
+
         var id = req.params.movieId;
         Movie.findById(id, function (err, movie) {
             if (err) res.send(err);
@@ -299,7 +344,6 @@ router.route('/movie/:movieId')
         //     });
         //     //res.json(reviews);
         // })
-
             if(req.query.reviews === "true"){
                 Movie.aggregate([{
                     $lookup: {
