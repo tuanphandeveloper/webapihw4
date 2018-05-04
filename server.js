@@ -22,13 +22,14 @@ router.route('/review/:movieId')
     .post(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
 
-        if (!req.body.reviewer) {
-            res.json({sucess: false, msg: 'Please pass reviewer'})
-            console.log('Please pass reviewer')
-        }
-        else if (!req.body.quote) {
+
+        if (!req.body.quote) {
             res.json({sucess: false, msg: 'Please pass opinion quote of movie'})
             console.log('Please pass opinion quote of movie')
+        }
+        else if (!req.body.reviewer) {
+            res.json({sucess: false, msg: 'Please pass reviewer'})
+            console.log('Please pass reviewer')
         }
         else if (!req.body.rate) {
             res.json({sucess: false, msg: 'Please pass rating(1 - 5)'})
