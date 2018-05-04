@@ -37,7 +37,7 @@ router.route('/review/:movieId')
                 else if (movie) {
 
                     var review = new Review(req.body)
-                    review.movie = req.body.movie
+                    review.movie = movie.title
                     review.reviewer = req.body.reviewer
                     review.quote = req.body.quote
                     review.rate = req.body.rate
