@@ -24,13 +24,17 @@ router.route('/review/:movieId')
 
         if (!req.body.reviewer) {
             res.json({sucess: false, msg: 'Please pass reviewer'})
+            console.log('Please pass reviewer')
         }
         else if (!req.body.quote) {
             res.json({sucess: false, msg: 'Please pass opinion quote of movie'})
+            console.log('Please pass opinion quote of movie')
         }
         else if (!req.body.rate) {
             res.json({sucess: false, msg: 'Please pass rating(1 - 5)'})
+            console.log('Please pass rating(1 - 5)')
         } else {
+            console.log("we are here")
 
             Movie.findById(id, function (err, movie) {
                 if (err) res.send(err);
