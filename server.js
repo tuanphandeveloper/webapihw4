@@ -31,7 +31,7 @@ router.route('/review/:movieId')
             res.json({sucess: false, msg: 'Please pass reviewer'})
             console.log('Please pass reviewer')
         }
-        else if (!req.body.rate) {
+        else if (!req.body.rating) {
             res.json({sucess: false, msg: 'Please pass rating(1 - 5)'})
             console.log('Please pass rating(1 - 5)')
         } else {
@@ -45,7 +45,7 @@ router.route('/review/:movieId')
                     review.movie = movie.title
                     review.reviewer = req.body.reviewer
                     review.quote = req.body.quote
-                    review.rate = req.body.rate
+                    review.rate = req.body.rating
 
                     movie.numberReview += 1;
                     movie.totalRating += review.rate;
